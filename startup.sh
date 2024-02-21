@@ -8,11 +8,11 @@ else
   DOCKER_ACCOUNT=$1
 fi
 
-cat $MYDIR/vuln-app-1.yaml | envsubst | kubectl apply -f -
+cat $MYDIR/logshell-vuln.yaml | envsubst | kubectl apply -f -
 
 echo "⌚️ Waiting for pod deployment..."
 kubectl wait --for=condition=ready pod \
-             --selector=app=goof \
+             --selector=app=log4shell-vulnerable-app \
              --timeout=90s
 
 echo "Done."
