@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: log4shell-vulnerable-app
+  name: log4shell-vulnerable-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log4shell-vulnerable-app
+  template:
+    metadata:
+      labels:
+        app: log4shell-vulnerable-app
+    spec:
+      containers:
+      - image: ${DOCKER_ACCOUNT}/log4shell-vulnerable-app:latest
+        imagePullPolicy: Always
+        name: log4shell-vulnerable-app
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: log4shell-vulnerable-app
+  name: log4shell-vulnerable-app
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: log4shell-vulnerable-app
