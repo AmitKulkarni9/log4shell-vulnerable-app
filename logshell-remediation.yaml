@@ -3,23 +3,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: log4shell-vulnerable-app
-  name: log4shell-vulnerable-app
+    app: log4shell-remediation-app
+  name: log4shell-remediation-app
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: log4shell-vulnerable-app
+      app: log4shell-remediation-app
   template:
     metadata:
       labels:
-        app: log4shell-vulnerable-app
+        app: log4shell-remediation-app
     spec:
       containers:
       - image: amtoya/log4shell-vulnerable-app:latest
         imagePullPolicy: Always
-        name: log4shell-vulnerable-app
+        name: log4shell-remediation-app
         securityContext:
           readOnlyRootFilesystem: true
         volumeMounts:
@@ -43,8 +43,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: log4shell-vulnerable-app
-  name: log4shell-vulnerable-app
+    app: log4shell-remediation-app
+  name: log4shell-remediation-app
 spec:
   type: LoadBalancer
   ports:
@@ -52,4 +52,4 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    app: log4shell-vulnerable-app
+    app: log4shell-remediation-app

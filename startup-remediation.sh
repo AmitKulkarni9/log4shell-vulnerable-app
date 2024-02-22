@@ -13,7 +13,7 @@ cat logshell-remediation.yaml | envsubst | kubectl apply -f -
 
 echo "⌚️ Waiting for pod deployment..."
 kubectl wait --for=condition=running pod \
-             --selector=app=log4shell-vulnerable-app \
+             --selector=app=log4shell-remediation-app \
              --timeout=5m
 
 echo "Done."
