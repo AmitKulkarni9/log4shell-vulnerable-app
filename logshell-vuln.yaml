@@ -17,7 +17,7 @@ spec:
         app: log4shell-vulnerable-app
     spec:
       containers:
-      - image: ${DOCKER_ACCOUNT}/log4shell-vulnerable-app:latest
+      - image: amtoya/log4shell-vulnerable-app:latest
         imagePullPolicy: Always
         name: log4shell-vulnerable-app
       restartPolicy: Always
