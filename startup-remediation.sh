@@ -9,7 +9,7 @@ else
 fi
 
 #cat $MYDIR/logshell-vuln.yaml | envsubst | kubectl apply -f -
-cat llogshell-remediation.yaml | envsubst | kubectl apply -f -
+cat logshell-remediation.yaml | envsubst | kubectl apply -f -
 
 echo "⌚️ Waiting for pod deployment..."
 kubectl wait --for=condition=running pod \
