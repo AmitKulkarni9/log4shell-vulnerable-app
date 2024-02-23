@@ -78,6 +78,10 @@ pwned
 ...
 ```
 
+### Mitigation Strategy
+
+The mitigation strategy is located under doc folder. One of the strategies - Use logshell-remediation.yaml to deploy the container. The SecurityContext of readOnlyRootFilesystem: true can be used to not write into root file system to mitigate this vulnerablility.
+
 ## Reference
 
 https://www.lunasec.io/docs/blog/log4j-zero-day/  
